@@ -2,7 +2,7 @@
 
 MyDataStore::MyDataStore() {
 	int pos = users.size();
-	for(int i = 0; i < user_n; i++)
+	for(int i = 0; i < pos; i++)
 	{
 		std::vector<Product*> temp_vec;
 		users_map[users[pos]] = temp_vec;
