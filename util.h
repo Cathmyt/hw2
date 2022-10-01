@@ -30,8 +30,8 @@ std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2)
 		else if (*it_1 > *it_2){
 			++it_2;
 		}
-		return inter_set;
 	}
+	return inter_set;
 }
 
 template <typename T>
@@ -57,9 +57,8 @@ std::set<T> setUnion(std::set<T>& s1, std::set<T>& s2)
 			union_set.insert(*it_2);
 			++it_2;
 		}
-		return union_set;
 	}
-
+	return union_set;
 
 
 }
