@@ -5,6 +5,4 @@
 
 ### Programming Problem Notes
 
- - `make`
-
- - Bug in ADD/OR Search yet the functions used within the search are fine
+ - `make` for compile
