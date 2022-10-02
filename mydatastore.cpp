@@ -1,14 +1,5 @@
 #include "mydatastore.h"
 
-MyDataStore::MyDataStore() {
-	int pos = users.size();
-	for(int i = 0; i < pos; i++)
-	{
-		std::vector<Product*> temp_vec;
-		users_map[users[pos]] = temp_vec;
-	}
-}
-
 MyDataStore::~MyDataStore() {
 
 }
@@ -20,7 +11,10 @@ void MyDataStore::addProduct(Product* p) {
 
 //Adds a user to the data store
 void MyDataStore::addUser(User* u) {
+	int pos = users.size();
+	std::vector<Product*> temp_vec;
 	users.push_back(u);
+	users_map[users[pos]] = temp_vec;
 }
 
 /**
@@ -32,7 +26,6 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 	std::vector<Product*> result;
 	std::set<Product*>::iterator it;
 	int term_size = terms.size();
-	
 	std::vector<std::set<Product*>> keyword_vec = find_all(terms);
 	std::set<Product*> temp_set = keyword_vec[0];
 	if (type == 0) {
@@ -68,12 +61,12 @@ std::vector<std::set<Product*>> MyDataStore::find_all(std::vector<std::string>& 
 		temp_stringset_1 = products[i]->keywords();
 		for(it_a = temp_stringset_1.begin(); it_a!=temp_stringset_1.end(); ++it_a) {
 			temp_string_1 = *it_a;
-			temp_stringset_2 = parseStringToWords(temp_string_1);
+			std::set<std::string> temp_stringset_2 = parseStringToWords(temp_string_1);
 			for(it_b = temp_stringset_2.begin(); it_b != temp_stringset_2.end(); ++it_b) {
-				temp_string_2 = *it_b;
+				std::string temp_string_2 = *it_b;
 				temp_string_2 = convToLower(temp_string_2);
-				for (int j = 0; j < int(terms.size()); j++) {
-					if (terms[j] == temp_string_2) {
+				for(int j = 0; j < int(terms.size()); j++) {
+					if(terms[j] == temp_string_2) {
 						result[j].insert(products[i]);
 					}
 				}
@@ -192,7 +185,7 @@ void MyDataStore::buyCart(std::string name) {
 			}
 		}
 		//remove from cart
-		for (int j=bought.size(); j>=0; j--) {
+		for (int j=bought.size()-1; j>=0; j--) {
 			users_map[temp_user].erase(users_map[temp_user].begin()+bought[j]);
 		}
 	}

@@ -4,7 +4,6 @@
 
 class MyDataStore : public DataStore {
 	public:
-		MyDataStore();
 		~MyDataStore();
     //Adds a product to the data store
 		void addProduct(Product* p);

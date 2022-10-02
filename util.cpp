@@ -19,17 +19,28 @@ std::set<std::string> parseStringToWords(string rawWords)
     std::string s;
     int len = 0;
 		int curr = 0;
-    rawWords = trim(rawWords);
+		rawWords = trim(rawWords);
     for (unsigned int i=0; i<rawWords.size(); i++) {
-        len++;
-        if (ispunct(rawWords[i])==true) {
-					s = rawWords.substr(curr, len);
-					curr = i+1;
-					if (len >=2) {
+        if (ispunct(rawWords[i])==false && isspace(rawWords[i])==false) {
+					len++;
+				}
+				else if (i == (rawWords.size()-1)) {
+					if (len>=1) {
+						s = rawWords.substr(curr, len+1);
 						Words_set.insert(s);
 					}
-          len = 0;
-        }
+				}
+				else {
+					if (len>=2) {
+						s = rawWords.substr(curr, len);
+						Words_set.insert(s);
+						len = 0;
+					}
+					else {
+						len = 0;
+					}
+					curr = i + 1;
+				}
     }
     return Words_set;
 }
