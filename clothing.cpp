@@ -18,10 +18,13 @@ std::set<std::string> Clothing::keywords() const
 {
   std::set<std::string> key_set;
   //returns the appropriate keywords to index the product
-  key_set.insert(Size_);
-  key_set.insert(Brand_);
-  key_set.insert(name_);
-  return key_set;
+  key_set = parseStringToWords(Brand_);
+
+	std::set<std::string> name_set;
+  name_set = parseStringToWords(name_);
+
+	key_set.insert(name_set.begin(), name_set.end());
+	return key_set;
 }
 
 std::string Clothing::displayString() const

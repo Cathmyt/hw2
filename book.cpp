@@ -18,10 +18,14 @@ std::set<std::string> Book::keywords() const
 {
   std::set<std::string> key_set;
   //returns the appropriate keywords to index the product
-  key_set.insert(Author_);
-  key_set.insert(ISBN_);
-  key_set.insert(name_);
-  return key_set;
+  key_set = parseStringToWords(Author_);
+	key_set.insert(ISBN_);
+
+	std::set<std::string> name_set;
+  name_set = parseStringToWords(name_);
+
+	key_set.insert(name_set.begin(), name_set.end());
+	return key_set;
 }
 
 std::string Book::displayString() const
