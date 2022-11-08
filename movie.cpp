@@ -29,8 +29,8 @@ std::string Movie::displayString() const
 	//to create a string that contains the product info
   std::stringstream book_str;
   book_str << name_ << "\nGenre: " << Genre_;
-  book_str << "\nRating: " << Rating_;
-  book_str << "\n" << price_ << "\n" << qty_ << " left.";
+  book_str << " Rating: " << Rating_;
+  book_str << "\n" << price_ << " " << qty_ << " left.";
 	return book_str.str();
 }
 

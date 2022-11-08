@@ -29,8 +29,8 @@ std::string Book::displayString() const
 	//to create a string that contains the product info
   std::stringstream book_str;
   book_str << name_ << "\nAuthor: " << Author_;
-  book_str << "\nISBN: " << ISBN_;
-  book_str << "\n" << price_ << "\n" << qty_ << " left.";
+  book_str << " ISBN: " << ISBN_;
+  book_str << "\n" << price_ << " " << qty_ << " left.";
 	return book_str.str(); 
 }
 
