@@ -30,11 +30,12 @@ std::string Movie::displayString() const
   std::stringstream book_str;
   book_str << name_ << "\nGenre: " << Genre_;
   book_str << "\nRating: " << Rating_;
-  book_str << "\n" << price_ << " " << qty_ << " left.";
+  book_str << "\n" << price_ << "\n" << qty_ << " left.";
 	return book_str.str();
 }
 
 void Movie::dump(std::ostream& os) const
 {
-  os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << Genre_ << "\n" << Rating_ << std::endl;
+  Product::dump(os);
+	os << Genre_ << "\n" << Rating_ << "\n"; 
 }

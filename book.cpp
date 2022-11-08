@@ -30,11 +30,12 @@ std::string Book::displayString() const
   std::stringstream book_str;
   book_str << name_ << "\nAuthor: " << Author_;
   book_str << "\nISBN: " << ISBN_;
-  book_str << "\n" << price_ << " " << qty_ << " left.";
-	return book_str.str();
+  book_str << "\n" << price_ << "\n" << qty_ << " left.";
+	return book_str.str(); 
 }
 
 void Book::dump(std::ostream& os) const
 {
-  os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << ISBN_ << "\n" << Author_ << std::endl;
+  Product::dump(os);
+	os << ISBN_ << "\n" << Author_ << "\n";
 }

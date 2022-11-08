@@ -30,11 +30,12 @@ std::string Clothing::displayString() const
   std::stringstream book_str;
   book_str << name_ << "\nSize: " << Size_;
   book_str << "\nBrand: " << Brand_;
-  book_str << "\n" << price_ << " " << qty_ << " left.";
+  book_str << "\n" << price_ << "\n" << qty_ << " left.";
 	return book_str.str();
 }
 
 void Clothing::dump(std::ostream& os) const
 {
-  os << category_ << "\n" << name_ << "\n" << price_ << "\n" << qty_ << "\n" << Size_ << "\n" << Brand_ << std::endl;
+  Product::dump(os);
+	os << Size_ << "\n" << Brand_ << "\n";
 }
